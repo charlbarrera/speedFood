@@ -1,16 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
+import { ListMenuComponent } from './components/list-menu/list-menu.component';
+import { MenuService } from './services/menu.service';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListMenuComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
