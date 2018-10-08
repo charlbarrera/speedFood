@@ -4,13 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Install the project in pc
 
-1/ clone the project
+1/ git clone
 https://github.com/charlbarrera/speedFood.git
 
-2/ install dependencies
+2/ 
 npm install
 
-3/ open serve 
+3/
 ng serve
 
 ## Development server
