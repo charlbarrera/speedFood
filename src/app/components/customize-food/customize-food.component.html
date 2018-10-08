@@ -1,0 +1,16 @@
+<mat-vertical-stepper [linear]="isLinear">
+  <mat-step *ngFor="let step of data.steps">
+    <ng-template matStepLabel>{{step.name}}</ng-template> 
+    <label for="">{{step.description}}</label>
+    <div class="container">
+      <div class="row">
+        <mat-card class="example-card m-auto" *ngFor="let item of step.items" (click)="data1({itemObject: item, stepObject:step})">
+          <mat-card-header>
+            <mat-card-title>{{item.name}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image class="image-item" src="{{item.image}}" alt="Photo of a Shiba Inu">
+        </mat-card>
+      </div>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

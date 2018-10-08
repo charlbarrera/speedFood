@@ -1,12 +1,15 @@
-<div>
-  <h1>Bienvenido</h1>
-  <h2 class="">¿Que te apetece comer?</h2>
+<mat-toolbar color="primary">
+  <div class="m-auto">
+    <h1>Bienvenido</h1>
+    <h2 class="">¿Que te apetece comer?</h2>
+  
+  </div>
 
-</div>
+</mat-toolbar>
 
-<div class="container">
-  <div class="row">
-    <mat-card class="example-card m-auto" *ngFor="let element of menu">
+<div class="container shadow-lg p-3 mb-5 rounded">
+  <div class="row p-20">
+    <mat-card class="example-card m-auto" *ngFor="let element of menu" (click)="customFood(element)">
       <mat-card-header>
         <mat-card-title>{{element.name}}</mat-card-title>
         <mat-card-subtitle>$ {{element.price}}</mat-card-subtitle>
@@ -15,7 +18,7 @@
       <mat-card-content>
 
         <p>
-          {{element.codebar}}
+          Codigo de barras: {{element.codebar}}
         </p>
       </mat-card-content>
     </mat-card>
