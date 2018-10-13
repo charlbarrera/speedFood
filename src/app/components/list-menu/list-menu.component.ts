@@ -17,13 +17,16 @@ export class ListMenuComponent implements OnInit {
 
   ngOnInit() {
     this._menuService.getMenu().subscribe(
-      data => this.menu = data
+      data => {
+        this.menu = data;
+      }
     );
   }
 
   customFood(element) {
   const dialogRef = this.dialog.open(CustomizeFoodComponent, {
-    width: '800px',
+    width: '600px',
+    height: '500px',
     data: element
   });
   }

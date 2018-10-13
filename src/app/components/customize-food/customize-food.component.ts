@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ListMenuComponent } from '../list-menu/list-menu.component';
+import { CustomService } from '../../services/custom.service';
 
 @Component({
   selector: 'app-customize-food',
@@ -9,17 +10,22 @@ import { ListMenuComponent } from '../list-menu/list-menu.component';
 })
 export class CustomizeFoodComponent implements OnInit {
 
-  isLinear = false;
+  customizeData = [];
 
   constructor( public dialogRef: MatDialogRef<ListMenuComponent>,
-              @Inject(MAT_DIALOG_DATA) public data) { }
+              @Inject(MAT_DIALOG_DATA) public data,
+              private _customService: CustomService) { }
 
   ngOnInit() {
-    console.log('this is custom component: ' + this.data.name);
+    console.log(this.data);
   }
 
-  data1(object) {
-      console.log(object.itemObject);
+  pickCustom(value) { // this method is for save the customize within a array
+    this.customizeData[ value.itemStep.id - 1] = value;
+  }
+
+  saveCustom() {
+    this._customService.createCustomFood(this.customizeData);
   }
 
 }
