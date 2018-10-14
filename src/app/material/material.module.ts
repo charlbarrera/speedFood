@@ -6,6 +6,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { MatTableModule } from '@angular/material/table';
     MatStepperModule,
     MatToolbarModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule
   ],
   exports: [
     MatCardModule,
@@ -23,7 +25,8 @@ import { MatTableModule } from '@angular/material/table';
     MatStepperModule,
     MatToolbarModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule
   ],
   declarations: []
 })

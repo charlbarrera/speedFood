@@ -12,7 +12,7 @@ export class SummaryOrderComponent implements OnInit {
   dataSource = [];
   showMessage: Boolean = true;
   @ViewChild(MatTable) table: MatTable<any>;
-  displayedColumns: string[] = ['name', 'details', 'price'];
+  displayedColumns: string[] = ['name', 'details', 'price', 'actions'];
 
   constructor(private _customService: CustomService) { }
 
@@ -29,6 +29,17 @@ export class SummaryOrderComponent implements OnInit {
 
   getPriceTotal() {
     return this.dataSource.map( a => a.price).reduce((a, b) => a + b, 0);
+  }
+
+  sendOrder() {
+    const confirmOrder = confirm('esta seguro de su orden?');
+    if (confirmOrder) {
+      this._customService.sendOrder();
+      alert('Orden en camino');
+      console.log(this.dataSource);
+    } else {
+      console.log('cancelado');
+    }
   }
 
 }

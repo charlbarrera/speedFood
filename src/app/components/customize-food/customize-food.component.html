@@ -1,22 +1,26 @@
-<mat-vertical-stepper>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step *ngFor="let step of data.steps">
-    <ng-template matStepLabel>{{step.name}}</ng-template> 
-    <label for="">{{step.description}}</label>
-      <div class="container">
-        <div class="row">
-            <mat-card class="example-card m-auto" *ngFor="let item of step.items"
-                      value="item.name" (click)="pickCustom({food:data , itemStep:step, item:item})">
-              <mat-card-header>
-                <mat-card-title>{{item.name}}</mat-card-title>
-              </mat-card-header>
-              <img mat-card-image class="image-item" src="{{item.image}}" alt="Photo of {{step.name}}">
-            </mat-card>
-          </div>
-        </div>
-       <button mat-raised-button matStepperNext 
-               color="primary">next</button>
-       <div *ngIf="step.id === data.steps.length ">
-          <button mat-raised-button color="primary" (click)="saveCustom()">Guardar</button>
-       </div>        
-  </mat-step>
+    <form >
+          <ng-template matStepLabel>{{step.name}}</ng-template> 
+          <label for="">{{step.description}}</label>
+            <div class="container">
+              <div class="row">
+                  <mat-card class="example-card m-auto" *ngFor="let item of step.items"
+                            value="item.name" (click)="pickCustom({food:data , itemStep:step, item:item})"
+                             >
+                    <mat-card-header>
+                      <mat-card-title>{{item.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="image-item" src="{{item.image}}" alt="Photo of {{step.name}}">
+                  </mat-card>
+                </div>
+              </div>
+              <br>
+            <button *ngIf="step.id !== data.steps.length" mat-raised-button matStepperNext 
+                    color="primary">next</button>
+            <div *ngIf="step.id === data.steps.length ">
+                <button mat-raised-button color="primary" (click)="saveCustom()">Guardar</button>
+            </div>        
+          </form>
+      </mat-step>
 </mat-vertical-stepper>
