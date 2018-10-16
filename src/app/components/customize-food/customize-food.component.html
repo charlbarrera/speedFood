@@ -1,4 +1,4 @@
-<h3>{{data.name}}</h3>
+<h3>{{data.name}}</h3> //this component is for customize the food
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <ng-template  matStepperIcon="edit">
     <i class="material-icons">done</i>
@@ -9,7 +9,7 @@
           <label for="">{{step.description}}</label>
             <div class="container">
               <div class="row card-row">
-                <mat-radio-group *ngIf="step.id !== data.steps.length">
+                <mat-radio-group *ngIf="step.id !== data.steps.length"> //with radio group the user only has one option to select
                   <mat-radio-button *ngFor="let item of step.items" 
                               class="example-card m-auto"
                               (click)="pickCustom({food:data, itemStep:step, item:item})" 
@@ -23,7 +23,7 @@
                     </mat-card>
                   </mat-radio-button>
                 </mat-radio-group>
-                <section *ngIf="step.id === data.steps.length">
+                <section *ngIf="step.id === data.steps.length"> //with this checkbox the user has multiple options to select
                   <mat-checkbox *ngFor="let item of step.items" 
                   class="example-card m-auto"
                   [(ngModel)]="item.multiple" [ngModelOptions]="{standalone: true}">

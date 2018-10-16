@@ -11,31 +11,31 @@ export class SummaryOrderComponent implements OnInit {
 
   dataSource = [];
   showMessage: Boolean = true;
-  @ViewChild(MatTable) table: MatTable<any>;
-  displayedColumns: string[] = ['name', 'details', 'price', 'actions'];
+  @ViewChild(MatTable) table: MatTable<any>; // is a reference to the mat-table
+  displayedColumns: string[] = ['name', 'details', 'price', 'actions']; // the data within the table
 
-  constructor(private _customService: CustomService) { }
+  constructor(private _customService: CustomService) { } // calling to my service
 
   ngOnInit() {
-     this._customService.summaryCustomFood().subscribe(
-      data => {
-          this.showMessage = false;
-         this.dataSource.push(data);
-         this.table.renderRows();
-         this.getPriceTotal();
+     this._customService.summaryCustomFood().subscribe( // in my service I have a observable
+      data => { // then each time that the user has a new data, automatically this is updated
+          this.showMessage = false; // don't show the message if a new data is entered
+         this.dataSource.push(data); // save the data within the dataSource
+         this.table.renderRows(); // this is for update the table when it has a new data
+         this.getPriceTotal(); // this is for update the price when it has a new data
       }
     );
   }
 
   getPriceTotal() {
-    return this.dataSource.map( a => a.price).reduce((a, b) => a + b, 0);
+    return this.dataSource.map( a => a.price).reduce((a, b) => a + b, 0); // function is for adding
   }
 
   sendOrder() {
     const confirmOrder = confirm('esta seguro de su orden?');
     if (confirmOrder) {
-      this.dataSource.length = 0;
-      this.table.renderRows();
+      this.dataSource.length = 0; // if User accept the order this one delete data of table
+      this.table.renderRows(); // update table
       alert('Orden en camino');
       this.showMessage = true;
     } else {

@@ -6,20 +6,22 @@ import { Observable, Subject } from 'rxjs';
 })
 export class CustomService {
 
-  private $subject = new Subject<any>();
+  private $subject = new Subject<any>(); // creating a observable
 
-//  7:30 - 12;
-//  function 17 octumbre calle 47 81-85 102 barrio floresta 4487350;
   constructor() { }
 
-  createCustomFood(food) {
+  createCustomFood(food) { // when user save the custom the food this function is called
     const newFood = {detail: '', name: '', price: '', moreDetails: ''};
     const details = food.filter(whole => whole.item).map(data => data.item.name);
+    // with details only I filtered the data that contain item of radio group
     const moreDetails = food.filter(name => name.name).map(data => data.name);
+    // with moreDetails I filtered the data that contain object of checkbox
     newFood.detail = details.concat(moreDetails);
+    // then I joined these two arrays 'details' and 'moreDetails' for have the items with radio group
+    // and checbox in one array
     newFood.name = food[0].food.name;
     newFood.price = food[0].food.price;
-    console.log(newFood);
+    // until here, I created a model of data for save in the observable $subject
     this.$subject.next(newFood);
   }
 

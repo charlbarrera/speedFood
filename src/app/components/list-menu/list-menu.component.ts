@@ -18,16 +18,16 @@ export class ListMenuComponent implements OnInit {
   ngOnInit() {
     this._menuService.getMenu().subscribe(
       data => {
-        this.menu = data;
+        this.menu = data; // I called to the service for get the data of the API and assigned it to menu variable
       }
     );
   }
 
   customFood(element) {
-  const dialogRef = this.dialog.open(CustomizeFoodComponent, {
+  const dialogRef = this.dialog.open(CustomizeFoodComponent, {// with this a open my customize-food component
     width: '700px',
     height: '800px',
-    data: element
+    data: element // I pass the data to customize-food
   });
   }
 

@@ -9,7 +9,7 @@ export class MenuService {
 
   constructor(private http: HttpClient) { }
 
-  getMenu() {
+  getMenu() { // connecting to API of tekus
     return this.http.get('http://cdn.tekus.co/PT2018/Products.json');
   }
 }

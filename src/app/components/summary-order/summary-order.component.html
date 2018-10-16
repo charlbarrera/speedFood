@@ -1,4 +1,4 @@
-<div class="container table-container mat-elevation-z8">
+<div class="container sticky-top table-container mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Producto</th>
@@ -27,7 +27,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></tr>
   </table>
-  <div *ngIf="showMessage" class="alert alert-success">
+  <div *ngIf="showMessage" class="alert alert-success"> 
+    <!-- if table hasn´t data then this message is available -->
     <h1 class="alert header">
       Selecciona lo que deseas comer
     </h1>
