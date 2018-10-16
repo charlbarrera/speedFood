@@ -1,18 +1,40 @@
+<h3>{{data.name}}</h3>
 <mat-vertical-stepper [linear]="isLinear" #stepper>
+  <ng-template  matStepperIcon="edit">
+    <i class="material-icons">done</i>
+  </ng-template>
   <mat-step *ngFor="let step of data.steps">
-    <form >
+    <form>
           <ng-template matStepLabel>{{step.name}}</ng-template> 
           <label for="">{{step.description}}</label>
             <div class="container">
-              <div class="row">
-                  <mat-card class="example-card m-auto" *ngFor="let item of step.items"
-                            value="item.name" (click)="pickCustom({food:data , itemStep:step, item:item})"
-                             >
-                    <mat-card-header>
-                      <mat-card-title>{{item.name}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image class="image-item" src="{{item.image}}" alt="Photo of {{step.name}}">
-                  </mat-card>
+              <div class="row card-row">
+                <mat-radio-group *ngIf="step.id !== data.steps.length">
+                  <mat-radio-button *ngFor="let item of step.items" 
+                              class="example-card m-auto"
+                              (click)="pickCustom({food:data, itemStep:step, item:item})" 
+                              value="{{item.name}}">
+
+                    <mat-card>
+                      <mat-card-header>
+                        <mat-card-title>{{item.name}}</mat-card-title>
+                      </mat-card-header>
+                      <img mat-card-image class="image-item" src="{{item.image}}" alt="Photo of {{step.name}}">
+                    </mat-card>
+                  </mat-radio-button>
+                </mat-radio-group>
+                <section *ngIf="step.id === data.steps.length">
+                  <mat-checkbox *ngFor="let item of step.items" 
+                  class="example-card m-auto"
+                  [(ngModel)]="item.multiple" [ngModelOptions]="{standalone: true}">
+                  <mat-card>
+                      <mat-card-header>
+                        <mat-card-title>{{item.name}}</mat-card-title>
+                      </mat-card-header>
+                      <img mat-card-image class="image-item" src="{{item.image}}" alt="Photo of {{step.name}}">
+                    </mat-card>
+                  </mat-checkbox>
+                </section>
                 </div>
               </div>
               <br>

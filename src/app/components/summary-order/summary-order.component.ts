@@ -19,10 +19,10 @@ export class SummaryOrderComponent implements OnInit {
   ngOnInit() {
      this._customService.summaryCustomFood().subscribe(
       data => {
+          this.showMessage = false;
          this.dataSource.push(data);
          this.table.renderRows();
          this.getPriceTotal();
-         this.showMessage = false;
       }
     );
   }
@@ -34,9 +34,10 @@ export class SummaryOrderComponent implements OnInit {
   sendOrder() {
     const confirmOrder = confirm('esta seguro de su orden?');
     if (confirmOrder) {
-      this._customService.sendOrder();
+      this.dataSource.length = 0;
+      this.table.renderRows();
       alert('Orden en camino');
-      console.log(this.dataSource);
+      this.showMessage = true;
     } else {
       console.log('cancelado');
     }

@@ -25,8 +25,8 @@ export class ListMenuComponent implements OnInit {
 
   customFood(element) {
   const dialogRef = this.dialog.open(CustomizeFoodComponent, {
-    width: '600px',
-    height: '500px',
+    width: '700px',
+    height: '800px',
     data: element
   });
   }

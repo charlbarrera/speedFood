@@ -27,7 +27,11 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></tr>
   </table>
-  <div *ngIf="showMessage" class="container">
-    <h1 class="display-4">Aqui aparecerán los productos que selecciones</h1>
+  <div *ngIf="showMessage" class="alert alert-success">
+    <h1 class="alert header">
+      Selecciona lo que deseas comer
+    </h1>
+    <hr>
+    <p>Aqui aparecerán todos los productos que elijas</p>
   </div>
 </div>
